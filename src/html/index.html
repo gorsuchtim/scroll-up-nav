@@ -4,18 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Local Env</title>
+    <style>
+      nav {
+        transition: all 0.35s ease-in-out;
+      }
+      .scroll--down {
+        transform: translateY(-72px);
+      }
+    </style>
   </head>
   <body class="bg-blue--primary" style="height: 5000px">
-    <nav
-      class="fixed top-0 w-full bg-white p-24"
-      style="transition: top 0.2s ease-in-out"
-    >
+    <nav class="fixed top-0 w-full bg-white p-24">
       <ul class="flex items-center">
         <li class="mr-16">Stuff</li>
         <li class="mr-16">Things</li>
         <li class="mr-16">Bonus</li>
       </ul>
     </nav>
+    <section class="hero h-476 bg-red"></section>
     <section class="h-476 bg-black"></section>
     <section class="h-476 bg-blue--primary"></section>
     <section class="h-476 bg-red"></section>
