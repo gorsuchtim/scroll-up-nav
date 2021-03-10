@@ -5,7 +5,6 @@ const NavStickyScrollUp = () => {
   const nav = document.querySelector("nav");
   const THROTTLE_TIMING = 50;
 
-  // let initialScrollTopPosition = 0;
   let initialScrollTopPosition = window.pageYOffset || scrollTop;
 
   const handleIsScrollingUp = currentScrollPosition =>
@@ -20,7 +19,7 @@ const NavStickyScrollUp = () => {
       const isScrollingUp = handleIsScrollingUp(currentScrollTop);
 
       // Update initial scroll position to equal new/current scrolltop position
-      initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+      initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop;
 
       // Show/hide nav menu
       if (isScrollingUp) {
