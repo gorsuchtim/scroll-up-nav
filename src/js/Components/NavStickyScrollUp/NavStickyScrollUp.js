@@ -1,17 +1,10 @@
 import throttle from "../../Utilities/Throttle/throttle";
 
 const NavStickyScrollUp = () => {
+  const nav = document.querySelector("nav");
   const THROTTLE_TIMING = 50;
 
   let initialScrollTopPosition = 0;
-
-  // Define nav
-  const nav = document.querySelector("nav");
-  const navHeight = nav.scrollHeight;
-
-  // Define hero
-  const hero = document.querySelector(".hero");
-  const heroHeight = hero.scrollHeight;
 
   const handleScrollDirection = () => {
     let direction = "";
@@ -36,9 +29,7 @@ const NavStickyScrollUp = () => {
     if (scrollDirection === "up") {
       nav.classList.remove("scroll--down");
     } else {
-      if (window.pageYOffset > heroHeight - navHeight) {
-        nav.classList.add("scroll--down");
-      }
+      nav.classList.add("scroll--down");
     }
   };
 
