@@ -1,7 +1,7 @@
 import throttle from "../../Utilities/Throttle/throttle";
 
 const NavStickyScrollUp = () => {
-  const THROTTLE_TIMING = 100;
+  const THROTTLE_TIMING = 50;
 
   let initialScrollTopPosition = 0;
 
