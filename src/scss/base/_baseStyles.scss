@@ -1,0 +1,65 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  color: $c-gray-steel;
+  //   font-family: $f-sans;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 24px;
+  overflow-x: hidden;
+}
+
+strong {
+  font-weight: bold;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+// Fonts
+h1 {
+  font-size: 32px;
+  line-height: 36px;
+
+  @include bp(md) {
+    font-size: 48px;
+    line-height: 52px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 32px;
+
+  @include bp(md) {
+    font-size: 32px;
+    line-height: 44px;
+  }
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 22px;
+
+  @include bp(md) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}

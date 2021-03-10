@@ -1,0 +1,30 @@
+.button {
+  background-color: transparent;
+  border: 1px solid $c-gray-steel;
+  border-radius: 8px;
+  padding: 16px 24px;
+
+  transition: background-color 0.25s ease-in-out;
+
+  @include bp(md) {
+    padding: 18px 32px;
+  }
+
+  &--primary {
+    background-color: $blue--primary;
+    color: white;
+
+    &:hover {
+      background-color: $blue--primary-hover;
+    }
+  }
+
+  &--secondary {
+    background-color: $pink--primary;
+    color: white;
+
+    &:hover {
+      background-color: $pink--primary-hover;
+    }
+  }
+}
