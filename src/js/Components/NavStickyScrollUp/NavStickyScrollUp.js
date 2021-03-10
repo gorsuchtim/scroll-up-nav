@@ -1,10 +1,10 @@
 import throttle from "../../Utilities/Throttle/throttle";
 
 const NavStickyScrollUp = () => {
-  const THROTTLE_TIMING = 50;
+  const THROTTLE_TIMING = 0;
 
   let initialScrollTopPosition = 0;
-
+  // get rid of this height baloney
   // Define nav
   const nav = document.querySelector("nav");
   const navHeight = nav.scrollHeight;
@@ -13,32 +13,24 @@ const NavStickyScrollUp = () => {
   const hero = document.querySelector(".hero");
   const heroHeight = hero.scrollHeight;
 
-  const handleScrollDirection = () => {
-    let direction = "";
-    // Why have this fallback "||" ??
+  //   THIS IS BROKEN BUT THE RIGHT IDEA
+  const handleIsScrollingUp = () => {
     const currentScrollTop =
       window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScrollTop > initialScrollTopPosition) {
-      direction = "down";
+      initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
     } else {
-      direction = "up";
+      return true;
     }
-
-    // what is this actually doing?
-    initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
-
-    return direction;
   };
 
   const handleScroll = () => {
-    const scrollDirection = handleScrollDirection();
-    if (scrollDirection === "up") {
+    const isScrollingUp = handleIsScrollingUp();
+    if (isScrollingUp) {
       nav.classList.remove("scroll--down");
     } else {
-      if (window.pageYOffset > heroHeight - navHeight) {
-        nav.classList.add("scroll--down");
-      }
+      nav.classList.add("scroll--down");
     }
   };
 
@@ -46,3 +38,21 @@ const NavStickyScrollUp = () => {
 };
 
 export default NavStickyScrollUp;
+
+// const handleScrollDirection = () => {
+//   let direction = "";
+//   // Why have this fallback "||" ??
+//   const currentScrollTop =
+//     window.pageYOffset || document.documentElement.scrollTop;
+
+//   if (currentScrollTop > initialScrollTopPosition) {
+//     direction = "down";
+//   } else {
+//     direction = "up";
+//   }
+
+//   // what is this actually doing?
+//   initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+
+//   return direction;
+// };
