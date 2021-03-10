@@ -1,35 +1,33 @@
 import throttle from "../../Utilities/Throttle/throttle";
 
 const NavStickyScrollUp = () => {
+  const scrollTop = document.documentElement.scrollTop;
   const nav = document.querySelector("nav");
   const THROTTLE_TIMING = 50;
 
-  let initialScrollTopPosition = 0;
+  // let initialScrollTopPosition = 0;
+  let initialScrollTopPosition = window.pageYOffset || scrollTop;
 
-  const handleScrollDirection = () => {
-    let direction = "";
-    // Why have this fallback "||" ??
-    const currentScrollTop =
-      window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScrollTop > initialScrollTopPosition) {
-      direction = "down";
-    } else {
-      direction = "up";
-    }
-
-    // what is this actually doing?
-    initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
-
-    return direction;
-  };
+  const handleIsScrollingUp = currentScrollPosition =>
+    currentScrollPosition < initialScrollTopPosition ? true : false;
 
   const handleScroll = () => {
-    const scrollDirection = handleScrollDirection();
-    if (scrollDirection === "up") {
-      nav.classList.remove("scroll--down");
-    } else {
-      nav.classList.add("scroll--down");
+    if (window.pageYOffset > 0) {
+      // Define current position on scroll
+      const currentScrollTop = window.pageYOffset || scrollTop;
+
+      // Define if user is scrolling up
+      const isScrollingUp = handleIsScrollingUp(currentScrollTop);
+
+      // Update initial scroll position to equal new/current scrolltop position
+      initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+
+      // Show/hide nav menu
+      if (isScrollingUp) {
+        nav.classList.remove("nav__scroll--hide");
+      } else {
+        nav.classList.add("nav__scroll--hide");
+      }
     }
   };
 
