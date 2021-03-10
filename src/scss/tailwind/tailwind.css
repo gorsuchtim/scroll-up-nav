@@ -1,0 +1,16 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer utilities {
+  .link-secondary {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .link-secondary:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,20 @@
+@mixin bp($width: $bp-xs, $direction: "up") {
+  @if $width == "md" or $width == "mdm" {
+    $width: $bp-md;
+  }
+
+  @if $width == "lg" {
+    $width: $bp-lg;
+  }
+
+  $is-up: $direction == "up";
+
+  @if not($is-up) {
+    $width: $width - 1;
+  }
+
+  // Conditionally change between min/max based on "direction"
+  @media (#{if($is-up, 'min', 'max')}-width: $width) {
+    @content;
+  }
+}

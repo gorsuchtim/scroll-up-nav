@@ -1,0 +1,7 @@
+@import "./variables/index-variables";
+// @import "./tailwind/tailwind";
+@import url("../css/tailwind/tailwind.css");
+@import "./mixins/index-mixins";
+@import "./base/baseStyles";
+@import "./helpers/index-helpers.scss";
+@import "./components/index-components.scss";
