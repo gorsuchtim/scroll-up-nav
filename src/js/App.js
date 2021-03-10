@@ -1,7 +1,7 @@
-import ComponentIndex from "./Components/ComponentIndex";
+import NavStickyScrollUp from "./Components/NavStickyScrollUp/NavStickyScrollUp";
 
 const App = () => {
-  ComponentIndex();
+  NavStickyScrollUp();
 };
 
 export default App;
