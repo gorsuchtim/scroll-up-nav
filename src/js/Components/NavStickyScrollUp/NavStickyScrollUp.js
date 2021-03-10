@@ -1,19 +1,21 @@
+import throttle from "../../Utilities/Throttle/throttle";
+
 const NavStickyScrollUp = () => {
+  const THROTTLE_TIMING = 50;
+
   let initialScrollTopPosition = 0;
 
-  //   Nav
+  // Define nav
   const nav = document.querySelector("nav");
-  const navComputedStyle = window.getComputedStyle(nav);
-  const navHeight = parseInt(navComputedStyle.height);
+  const navHeight = nav.scrollHeight;
 
-  //   Hero
-  const heroComputedStyle = window.getComputedStyle(
-    document.querySelector(".hero")
-  );
-  const heroHeight = parseInt(heroComputedStyle.height);
+  // Define hero
+  const hero = document.querySelector(".hero");
+  const heroHeight = hero.scrollHeight;
 
   const handleScrollDirection = () => {
     let direction = "";
+    // Why have this fallback "||" ??
     const currentScrollTop =
       window.pageYOffset || document.documentElement.scrollTop;
 
@@ -23,6 +25,7 @@ const NavStickyScrollUp = () => {
       direction = "up";
     }
 
+    // what is this actually doing?
     initialScrollTopPosition = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
 
     return direction;
@@ -39,7 +42,7 @@ const NavStickyScrollUp = () => {
     }
   };
 
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", throttle(handleScroll, THROTTLE_TIMING));
 };
 
 export default NavStickyScrollUp;
